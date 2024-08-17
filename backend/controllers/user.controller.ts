@@ -5,10 +5,10 @@ import jwt from 'jsonwebtoken';
 
 
 import User from '../models/user.model'; // Adjust path as needed
-import { IRequestWithFile } from '../types/express'; // Adjust path as needed
 import getDataUri from '../utils/dataUri';
 import cloudinary from '../utils/cloudinary';
 import { generateTokenAndCookies } from '../utils/generateTokenAndCookies';
+import { IRequestWithFile, IUpdateProfileRequest } from '../types/user/user.customRequest';
 
 
 
@@ -16,10 +16,7 @@ const SECRET_KEY = process.env.SECRET_KEY || 'your-secret-key';
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS || '10', 10);
 
 
-interface IUpdateProfileRequest extends Request {
-    file?: Express.Multer.File; // Optional file property for file uploads
-    userId?: string; // Optional userId property from middleware
-}
+
 
 export const register = async (req: IRequestWithFile, res: Response): Promise<Response> => {
     try {

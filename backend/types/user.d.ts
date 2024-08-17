@@ -1,4 +1,4 @@
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { IProfile } from './profile';
 
 export interface IUser extends Document {
